@@ -12,6 +12,7 @@ import CodeViewer from '@/components/CodeViewer';
 import AgentProgress, { AgentStage } from '@/components/AgentProgress';
 import AnalyticsDashboard from '@/components/AnalyticsDashboard';
 import Toast from '@/components/Toast';
+import NetworkStatus from '@/components/NetworkStatus';
 import { PersonalizationEngine } from '@/lib/personalization';
 
 export default function Home() {
@@ -224,10 +225,7 @@ export default function Home() {
               Developed by <a href="https://github.com/rajshah9305" target="_blank" rel="noopener noreferrer" className="font-semibold text-orange-600 hover:text-orange-700">RAJ SHAH</a>
             </div>
             <div className="flex items-center gap-3 text-gray-600">
-              <span className="flex items-center gap-2 px-2 py-1 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                Online
-              </span>
+              <NetworkStatus />
               <span className="text-gray-300">•</span>
               <span className="text-gray-500">Powered by Cerebras</span>
             </div>
