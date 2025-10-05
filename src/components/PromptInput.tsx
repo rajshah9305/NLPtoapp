@@ -58,7 +58,6 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
     });
 
     onGenerate(prompt);
-    setPrompt('');
     setShowSuggestions(false);
   };
 
@@ -123,18 +122,18 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
   ];
 
   return (
-    <div className="space-y-3 sm:space-y-4">
+    <div className="space-y-2 sm:space-y-3">
       {/* Welcome Message */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-xl p-4 sm:p-6 text-white animate-slide-up">
-        <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
+      <div className="relative overflow-hidden bg-gradient-to-br from-orange-500 via-orange-600 to-orange-700 rounded-lg p-3 sm:p-4 text-white animate-slide-up">
+        <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2" />
         <div className="relative">
-          <h1 className="text-xl sm:text-2xl font-bold mb-1">{welcomeMessage}</h1>
-          <p className="text-orange-100 text-sm sm:text-base">Transform your ideas into reality with AI</p>
+          <h1 className="text-lg sm:text-xl font-bold mb-0.5">{welcomeMessage}</h1>
+          <p className="text-orange-100 text-xs sm:text-sm">Transform your ideas into reality with AI</p>
         </div>
       </div>
 
       {/* Main Input Form */}
-      <form onSubmit={handleSubmit} className="space-y-3 animate-slide-up" style={{ animationDelay: '0.2s' }}>
+      <form onSubmit={handleSubmit} className="space-y-2 animate-slide-up" style={{ animationDelay: '0.2s' }}>
         <div className="relative">
           <div className="relative">
             <textarea
@@ -143,7 +142,7 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
               onChange={(e) => setPrompt(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder="Describe the app you want to build... (e.g., 'Create a modern todo app with dark mode')"
-              className="input-premium min-h-[100px] resize-none pr-12 text-sm scrollbar-premium focus-ring-orange"
+              className="w-full px-3 py-2.5 bg-white border-2 border-black rounded-lg focus:border-orange-500 focus:ring-4 focus:ring-orange-500/10 outline-none transition-all duration-200 placeholder:text-gray-400 min-h-[80px] resize-none pr-12 text-sm scrollbar-premium"
               disabled={isLoading}
               aria-label="Application description"
             />
@@ -156,17 +155,11 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
 
         </div>
 
-        <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 text-xs text-gray-600">
-            <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-            </svg>
-            <span className="hidden sm:inline">Be specific for better results</span>
-          </div>
+        <div className="flex items-center justify-end">
           <button
             type="submit"
             disabled={!prompt.trim() || isLoading}
-            className="btn-primary px-6 py-2.5 flex items-center gap-2 group text-sm"
+            className="btn-primary px-5 py-2 flex items-center gap-2 group text-sm"
           >
             {isLoading ? (
               <>
@@ -189,9 +182,9 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
       </form>
 
       {/* Template Gallery */}
-      <div className="space-y-1.5 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-        <h3 className="text-sm font-bold text-black">Quick Templates</h3>
-        <div className="flex flex-wrap gap-2">
+      <div className="space-y-1 animate-slide-up" style={{ animationDelay: '0.3s' }}>
+        <h3 className="text-xs font-bold text-black">Quick Templates</h3>
+        <div className="flex flex-wrap gap-1.5">
           {templates.map((template, idx) => (
             <button
               key={idx}
@@ -200,9 +193,9 @@ export default function PromptInput({ onGenerate, isLoading }: PromptInputProps)
                 setShowSuggestions(false);
               }}
               disabled={isLoading}
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 rounded-lg transition-all text-xs font-medium text-gray-700 hover:text-orange-600 group"
+              className="flex items-center gap-1 px-2.5 py-1 bg-gray-50 hover:bg-orange-50 border border-gray-200 hover:border-orange-300 rounded-md transition-all text-[11px] font-medium text-gray-700 hover:text-orange-600 group"
             >
-              <span className="text-base group-hover:scale-110 transition-transform">{template.icon}</span>
+              <span className="text-sm group-hover:scale-110 transition-transform">{template.icon}</span>
               <span>{template.title}</span>
             </button>
           ))}
