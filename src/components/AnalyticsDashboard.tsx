@@ -23,6 +23,9 @@ export default function AnalyticsDashboard() {
 
   useEffect(() => {
     loadAnalytics();
+    const handleToggle = () => setIsVisible(prev => !prev);
+    window.addEventListener('toggleAnalytics', handleToggle);
+    return () => window.removeEventListener('toggleAnalytics', handleToggle);
   }, []);
 
   const loadAnalytics = () => {
@@ -97,16 +100,6 @@ export default function AnalyticsDashboard() {
 
   return (
     <>
-      <button
-        onClick={() => setIsVisible(!isVisible)}
-        className="fixed bottom-4 right-4 z-50 btn-primary rounded-full px-4 py-2 shadow-premium-lg hover-lift text-sm"
-        aria-label="Toggle Analytics"
-      >
-        <svg className="w-4 h-4 inline mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-        </svg>
-        Analytics
-      </button>
 
       {isVisible && (
         <div className="fixed inset-0 z-40 flex items-center justify-center p-2 sm:p-4 bg-black/50 backdrop-blur-sm animate-scale-in" onClick={() => setIsVisible(false)}>

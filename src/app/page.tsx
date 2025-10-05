@@ -147,10 +147,19 @@ export default function Home() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
-                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                Online
-              </span>
+              <button
+                onClick={() => {
+                  const event = new CustomEvent('toggleAnalytics');
+                  window.dispatchEvent(event);
+                }}
+                className="flex items-center gap-2 px-3 py-1.5 text-gray-700 hover:text-orange-600 rounded-lg hover:bg-orange-50 transition-colors text-xs font-semibold"
+                aria-label="Analytics"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+                <span className="hidden sm:inline">Analytics</span>
+              </button>
               <a
                 href="https://github.com/rajshah9305/NLPtoapp"
                 target="_blank"
@@ -217,6 +226,11 @@ export default function Home() {
               <span className="text-gray-600">by <a href="https://github.com/rajshah9305" target="_blank" rel="noopener noreferrer" className="font-semibold text-orange-600 hover:text-orange-700">RAJ SHAH</a></span>
             </div>
             <div className="flex items-center gap-3 text-gray-600">
+              <span className="flex items-center gap-2 px-2 py-1 bg-green-50 text-green-700 rounded-full text-xs font-semibold">
+                <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                Online
+              </span>
+              <span className="text-gray-300">•</span>
               <a href="https://github.com/rajshah9305/NLPtoapp" target="_blank" rel="noopener noreferrer" className="hover:text-orange-600 transition-colors">GitHub</a>
               <span className="text-gray-300">•</span>
               <span className="text-gray-500">Powered by Cerebras</span>
