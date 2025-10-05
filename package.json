@@ -1,22 +1,7 @@
 {
   "name": "raj-ai-app-builder",
-  "version": "1.0.0",
-  "description": "RAJ AI APP BUILDER - Elite AI-powered platform by Raj Shah that converts natural language to React applications",
-  "author": "Raj Shah <https://github.com/rajshah9305>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/rajshah9305/NLPtoapp.git"
-  },
-  "keywords": [
-    "ai",
-    "code-generation",
-    "nextjs",
-    "cerebras",
-    "gpt-oss-120b",
-    "streaming",
-    "react"
-  ],
+  "version": "2.0.0",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,20 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@monaco-editor/react": "^4.7.0",
-    "next": "^14.2.33",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "next": "14.2.33",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-hot-toast": "2.4.1",
+    "@codesandbox/sandpack-react": "2.19.9"
   },
   "devDependencies": {
-    "@types/node": "^20.10.4",
-    "@types/react": "^18.2.45",
-    "@types/react-dom": "^18.2.17",
-    "autoprefixer": "^10.4.16",
-    "eslint": "^8.56.0",
-    "eslint-config-next": "^14.2.33",
-    "postcss": "^8.4.32",
-    "tailwindcss": "^3.3.6",
-    "typescript": "^5.3.3"
+    "@types/node": "20.10.4",
+    "@types/react": "18.2.45",
+    "@types/react-dom": "18.2.17",
+    "autoprefixer": "10.4.16",
+    "eslint": "8.56.0",
+    "eslint-config-next": "14.2.33",
+    "postcss": "8.4.32",
+    "tailwindcss": "3.3.6",
+    "typescript": "5.3.3"
   }
 }
