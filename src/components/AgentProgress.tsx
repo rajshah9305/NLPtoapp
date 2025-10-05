@@ -82,19 +82,19 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
   const currentStageIndex = stages.findIndex((s) => s.id === stage);
 
   return (
-    <div className="space-y-3 animate-slide-up">
+    <div className="space-y-2 animate-slide-up">
       {/* Progress Header */}
-      <div className="card-premium p-4">
+      <div className="card-premium p-3">
         <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-orange rounded-xl flex items-center justify-center text-white animate-pulse-orange">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 bg-gradient-orange rounded-lg flex items-center justify-center text-white animate-pulse-orange">
               {stages[currentStageIndex]?.icon}
             </div>
             <div>
-              <h3 className="text-base font-bold text-black">
+              <h3 className="text-sm font-bold text-black">
                 {stages[currentStageIndex]?.label}
               </h3>
-              <p className="text-xs text-gray-600">
+              <p className="text-[11px] text-gray-600">
                 {message || stages[currentStageIndex]?.description}
               </p>
             </div>
@@ -128,9 +128,9 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
       </div>
 
       {/* Stage Timeline */}
-      <div className="card-glass p-4">
-        <h4 className="text-xs font-semibold text-gray-600 mb-3">Pipeline</h4>
-        <div className="space-y-2">
+      <div className="card-glass p-3">
+        <h4 className="text-[11px] font-semibold text-gray-600 mb-2">Pipeline</h4>
+        <div className="space-y-1.5">
           {stages.map((stageItem, idx) => {
             const isActive = stageItem.id === stage;
             const isCompleted = idx < currentStageIndex;
@@ -139,7 +139,7 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
             return (
               <div
                 key={stageItem.id}
-                className={`flex items-center gap-3 p-2 rounded-lg transition-all duration-300 ${
+                className={`flex items-center gap-2.5 p-1.5 rounded-lg transition-all duration-300 ${
                   isActive
                     ? 'bg-orange-50 border-2 border-orange-500 scale-105'
                     : isCompleted
@@ -148,7 +148,7 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
                 }`}
               >
                 <div
-                  className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
+                  className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-all duration-300 ${
                     isActive
                       ? 'bg-gradient-orange text-white animate-pulse-orange'
                       : isCompleted
@@ -157,52 +157,32 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
                   }`}
                 >
                   {isCompleted ? (
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
                     </svg>
                   ) : (
-                    <span className="text-xs font-bold">{idx + 1}</span>
+                    <span className="text-[11px] font-bold">{idx + 1}</span>
                   )}
                 </div>
 
                 <div className="flex-1">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
                     <span
-                      className={`text-sm font-semibold ${
+                      className={`text-xs font-semibold ${
                         isActive ? 'text-orange-600' : isCompleted ? 'text-green-600' : 'text-gray-500'
                       }`}
                     >
                       {stageItem.label}
                     </span>
-                    {isActive && (
-                      <div className="flex gap-1">
-                        <span className="w-1 h-1 bg-orange-500 rounded-full animate-pulse" />
-                        <span className="w-1 h-1 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }} />
-                        <span className="w-1 h-1 bg-orange-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
-                      </div>
-                    )}
                   </div>
                   <p
-                    className={`text-[10px] ${
+                    className={`text-[10px] leading-tight ${
                       isActive ? 'text-orange-600' : isCompleted ? 'text-green-600' : 'text-gray-500'
                     }`}
                   >
                     {stageItem.description}
                   </p>
                 </div>
-
-                {isActive && (
-                  <div className="flex-shrink-0">
-                    <svg className="animate-spin h-4 w-4 text-orange-500" viewBox="0 0 24 24" fill="none">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path
-                        className="opacity-75"
-                        fill="currentColor"
-                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                      />
-                    </svg>
-                  </div>
-                )}
 
                 {isCompleted && (
                   <span className="text-[10px] text-green-600 font-semibold">✓</span>
@@ -214,27 +194,27 @@ export default function AgentProgress({ stage, progress, message }: AgentProgres
       </div>
 
       {/* Real-time Stats */}
-      <div className="grid grid-cols-3 gap-2">
-        <div className="card-premium p-3 text-center">
-          <div className="text-xl font-bold gradient-text">
+      <div className="grid grid-cols-3 gap-1.5">
+        <div className="card-premium p-2 text-center">
+          <div className="text-lg font-bold gradient-text">
             {stage === 'complete' ? '100' : Math.round(displayProgress)}%
           </div>
-          <div className="text-[10px] text-gray-600 mt-0.5">Progress</div>
+          <div className="text-[9px] text-gray-600">Progress</div>
         </div>
-        <div className="card-premium p-3 text-center">
-          <div className="text-xl font-bold text-orange-500">
+        <div className="card-premium p-2 text-center">
+          <div className="text-lg font-bold text-orange-500">
             {currentStageIndex + 1}/{stages.length}
           </div>
-          <div className="text-[10px] text-gray-600 mt-0.5">Stages</div>
+          <div className="text-[9px] text-gray-600">Stages</div>
         </div>
-        <div className="card-premium p-3 text-center">
-          <div className="text-xl font-bold text-black flex items-center justify-center gap-1">
-            <svg className="w-4 h-4 text-orange-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
+        <div className="card-premium p-2 text-center">
+          <div className="text-lg font-bold text-black flex items-center justify-center gap-1">
+            <svg className="w-3.5 h-3.5 text-orange-500 animate-pulse" fill="currentColor" viewBox="0 0 20 20">
               <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
             </svg>
             AI
           </div>
-          <div className="text-[10px] text-gray-600 mt-0.5">Powered</div>
+          <div className="text-[9px] text-gray-600">Powered</div>
         </div>
       </div>
     </div>
